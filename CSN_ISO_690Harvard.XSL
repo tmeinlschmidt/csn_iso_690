@@ -57,6 +57,7 @@
       </source>
       <source type="ArticleInAPeriodical">
 		<b:ImportantField>b:PeriodicalTitle</b:ImportantField>
+		<b:ImportantField>b:Title</b:ImportantField>
 		<b:ImportantField>b:Year</b:ImportantField>
 		<b:ImportantField>b:Publisher</b:ImportantField>
 		<b:ImportantField>b:City</b:ImportantField>
@@ -441,7 +442,7 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%PeriodicalTitle:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{ %ShortTitle:z%}{ [%Medium%]}{. %Edition%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{, %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%)}{, roč. %Volume:R%}{, č %Issue%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+          	<format>{%Author:2|Artist:2|Title%}{. %Title%}.{%PeriodicalTitle:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{ %ShortTitle:z%}{ [%Medium%]}{. %Edition%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{, %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%)}{, roč. %Volume:R%}{, č %Issue%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
         </column>
         <sortkey>{%PeriodicalTitle|ShortTitle%}{ %Year:c%}{ %Volume%}{%Issue%}</sortkey>
       </source>
@@ -634,7 +635,7 @@
         <single_prefix></single_prefix>
         <multi_prefix></multi_prefix>
         <corporate>{%Corporate:u%}</corporate>
-        <first_person>{%Last:u|First:u%}{‚ %First:aups%}{ %Middle:aups%}</first_person>
+        <first_person>{%Last:u|First:u%}{‚ %First:p%}{ %Middle:aups%}</first_person>
         <other_persons>{%First:aup%}{ %Middle:aups%}{ %Last:u%}</other_persons>
         <separator_between_if_two> a </separator_between_if_two>
         <separator_between_if_more_than_two>‚ </separator_between_if_more_than_two>
