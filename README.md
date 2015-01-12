@@ -2,6 +2,8 @@
 
 CSN ISO 690 Harvard XLS template
 
+Based on https://iso690.codeplex.com/
+
 ## Installation
 
 ### windows
