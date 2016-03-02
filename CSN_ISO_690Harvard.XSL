@@ -35,12 +35,15 @@
   <xsl:variable name="data">
     <general>
       <stylename>ČSN ISO 690 - harvardský styl</stylename>
-      <version>2012/04/22</version>
-      <author>Novotný Václav (novotny.v@clav.cz)</author>
+      <version>2016/03/01</version>
+      <author>Tom Meinlschmidt (tom@meinlschmidt.org)</author>
       <description>Bibiliografické odkazy a citace dokumentů dle normy ČSN ISO 690 (01 0197) dle aktualizace platné od 1. dubna 2011</description>
-      <URL>iso690.codeplex.com</URL>
+      <URL>github.com/tmeinlschmidt/csn_iso_690</URL>
       <comments>
-        This style is based on version 2.8 of the BibWord stylesheet - http://bibword.codeplex.com
+        Based on: 
+        Novotný Václav (novotny.v@clav.cz)
+        iso690.codeplex.com;
+        version 2.8 of the BibWord stylesheet - http://bibword.codeplex.com
       </comments>
       <display_errors>yes</display_errors>
       <citation_as_link>no</citation_as_link>
@@ -205,7 +208,7 @@
       <source type="JournalArticle">
 		<b:ImportantField>b:Author/b:Author/b:NameList</b:ImportantField>
 		<b:ImportantField>b:Title</b:ImportantField>
-		<b:ImportantField>b:PeriodicalTitle</b:ImportantField>
+		<b:ImportantField>b:JournalName</b:ImportantField>
 		<b:ImportantField>b:Year</b:ImportantField>
 		<b:ImportantField>b:Publisher</b:ImportantField>
 		<b:ImportantField>b:City</b:ImportantField>
@@ -336,7 +339,7 @@
       	<format>{%CitationPrefix%}{%Author:1|Interviewee:1|BroadcasterTitle|ShortTitle%{‚ %Year:c|"n.d."%{%YearSuffix%}}}{%Year:c%{%YearSuffix%}}{, %CitationPages:s. :s. :a2%}{%CitationSuffix%}</format>
       </source>
       <source type="JournalArticle">
-     	<format>{%CitationPrefix%}{%Author:1|Editor:1|Title|ShortTitle|PeriodicalTitle% {‚ %Year:c|"n.d."%{%YearSuffix%}}}{{{%Day% }%Month:s% }%Year%}{, %CitationPages:s. :s. :a2%}{%CitationSuffix%}}</format>
+     	<format>{%CitationPrefix%}{%Author:1|Editor:1|Title|ShortTitle|JournalName%{‚ %Year:c|"n.d."%{%YearSuffix%}}}{{{%Day% }%Month:s% }%Year%}{, %CitationPages:s. :s. :a2%}{%CitationSuffix%}}</format>
       </source>
       <source type="Misc">
      	<format>{%CitationPrefix%}{%Institution:u|ShortTitle|Author:1|Title|PublicationTitle%{‚ %Year:c%{%YearSuffix%}}}{%Year:c%{%YearSuffix%}}{, %Type:a|NumberVolumes%{ č. %NumberVolumes%}}{, %CitationPages:s. :s. :a2%}{%CitationSuffix%}</format>
@@ -442,7 +445,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%Author:2|Artist:2|Title%}{. %Title%}.{%PeriodicalTitle:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{ %ShortTitle:z%}{ [%Medium%]}{. %Edition%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{, %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%)}{, roč. %Volume:R%}{, č %Issue%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+            <format>{&lt;i&gt;%PeriodicalTitle%&lt;/i&gt;}{ [%ShortTitle%]}{ [%Medium%]}{. %Edition%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{.{ %Day%. %Month:s%} %Year%}{. &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%)}{, roč. %Volume:R%}{, č %Issue%}{. %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+          	<format LCID='999'>{%Author:2|Artist:2|Title%}{. %Title%}.{%PeriodicalTitle:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{ %ShortTitle:z%}{ [%Medium%]}{. %Edition%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{, %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%)}{, roč. %Volume:R%}{, č %Issue%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
         </column>
         <sortkey>{%PeriodicalTitle|ShortTitle%}{ %Year:c%}{ %Volume%}{%Issue%}</sortkey>
       </source>
@@ -451,7 +455,9 @@
           	<halign>left</halign>
           	<valign>top</valign>
             <!-- default all in Czech language -->
-          	<format>{%Author:2|Editor:3|Title:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %Title:i%}{ %ShortTitle:z%}{, sv. %Volume:R%.}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Překlad %Translator:8%}{. Ilustrace %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, verze %Version%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+            <format>{%Author:2%}{. &lt;i&gt;%Title%&lt;/i&gt;.}{ [%ShortTitle%]}{, sv. %Volume:R%}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Překlad %Translator:8%}{. Ilustrace %Artist:8%}{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{,{ %Day%. %Month%.} %Year%. }{%Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{%StandardNumber%.}{%Comments%.}{ %URL:s%}</format>
+            
+          	<format LCID='999'>{%Author:2|Editor:3|Title:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %Title:i%}{ %ShortTitle:z%}{, sv. %Volume:R%.}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Překlad %Translator:8%}{. Ilustrace %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, verze %Version%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
             <!-- English source -->
             <format LCID='1033'>{%Author:2|Editor:3|Title:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %Title:i%}{ %ShortTitle:z%}{, vol. %Volume:R%.}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Translated by %Translator:4%}{. Illustrated by %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, version %Version%}{, %Pages% s. }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
             <!-- German source -->
@@ -463,7 +469,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%Author:2|Editor:3|Title|ShortTitle:z|BookTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ %ShortTitle:z%}{, kap. %ChapterNumber%}{. In:{ %BookAuthor:2%.} %BookTitle:i%{, sv. %Volume:R%}}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Překlad %Translator:8%}{. Ilustrace %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, verze %Version%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+            <format>{%Author:2|Title|ShortTitle%}.{ %Title%}{ [%ShortTitle%]}{, kap. %ChapterNumber%}{. In:{ %BookAuthor:2%.} &lt;i&gt;%BookTitle%&lt;/i&gt;{, sv. %Volume:R%}}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. %Translator:4%}{. %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{,{ %Day%. %Month%.} %Year%}{, %Pages:s. :s. :a2% }{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+          	<format LCID='999'>{%Author:2|Editor:3|Title|ShortTitle:z|BookTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ %ShortTitle:z%}{, kap. %ChapterNumber%}{. In:{ %BookAuthor:2%.} %BookTitle:i%{, sv. %Volume:R%}}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Překlad %Translator:8%}{. Ilustrace %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, verze %Version%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
             <format LCID='1033'>{%Author:2|Editor:3|Title|ShortTitle:z|BookTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ %ShortTitle:z%}{, chap. %ChapterNumber%}{. In:{ %BookAuthor:2%.} %BookTitle:i%{, vol. %Volume:R%}}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Translated by %Translator:8%}{. Illustrated by %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
             <format LCID='1031'>{%Author:2|Editor:3|Title|ShortTitle:z|BookTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ %ShortTitle:z%}{, kap. %ChapterNumber%}{. In:{ %BookAuthor:2%.} %BookTitle:i%{, teil %Volume:R%}}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. Übersetzt von %Translator:4%}{. Illustriert von %Artist:8%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
         </column>
@@ -489,7 +496,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%Author:2|ProducerName:2|InternetSiteTitle|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %InternetSiteTitle%}.{ %ShortTitle:z%}{ In:{ %ProducerName:2%.} %Title:i%} [online].{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{%Year%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}]}}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
+            <format>{%Author:2%}{. %InternetSiteTitle%}.{ [%ShortTitle%]}{ In:{ %ProducerName:2%.} &lt;i&gt;%Title%&lt;/i&gt;} [online].{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{{ %Day%. %Month%.} %Year%{, %AbbreviatedCaseNumber%}}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}]}}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
+          	<format LCID='999'>{%Author:2|ProducerName:2|InternetSiteTitle|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %InternetSiteTitle%}.{ %ShortTitle:z%}{ In:{ %ProducerName:2%.} %Title:i%} [online].{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{%Year%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}]}}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
         </column>
         <sortkey>{%Author:0|Editor:9|InternetSiteTitle|ShortTitle%}{ %Year:c%}{ %InternetSiteTitle|ShortTitle%}</sortkey>
       </source>
@@ -497,7 +505,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%Author:2|Editor:3|Title:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %Title:i%}{ %ShortTitle:z%}{ [%Medium%]}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{, %Year:n%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+            <format>{%Author:2%}{. &lt;i&gt;%Title%&lt;/i&gt;}{ [%ShortTitle%]}{ [%Medium%]}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{,{ %Day%. %Month:s%} %Year%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+          	<format LCID='999'>{%Author:2|Editor:3|Title:i|ShortTitle:z%}{‚ %Year:rc%{%YearSuffix%}}{. %Title:i%}{ %ShortTitle:z%}{ [%Medium%]}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{, %Year:n%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
         </column>
         <sortkey>{%Author:0|Title|ShortTitle%}{ %Year:c%}{ %Title|ShortTitle%}{ %JournalName%}</sortkey>
       </source>
@@ -513,7 +522,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%ProducerName:2|Editor:3|InternetSiteTitle|Title:i%}{‚ %Year:rc%{%YearSuffix%}}{. %InternetSiteTitle%}{. %Title:i%}{ %ShortTitle:z%} [online]{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{, %Year:n%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
+      		  <format>{%ProducerName:2%}{. %InternetSiteTitle%}{. &lt;i&gt;%Title%&lt;/i&gt;}{ [%ShortTitle%]} [online]{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{,{ %Day%. %Month%.} %Year%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
+          	<format LCID='999'>{%ProducerName:2|Editor:3|InternetSiteTitle|Title:i%}{‚ %Year:rc%{%YearSuffix%}}{. %InternetSiteTitle%}{. %Title:i%}{ %ShortTitle:z%} [online]{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{, %Day%. %Month%. %Year:c%{, %AbbreviatedCaseNumber%}}{, %Year:n%}{, verze %Version%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %Comments%}.{ %StandardNumber|URL:s%}</format>
         </column>
         <sortkey>{%ProducerName:0|Editor:0|InternetSiteTitle|Title|ShortTitle%}{ %Year:c%}{ %Title|ShortTitle%}</sortkey>
       </source>
@@ -529,7 +539,8 @@
         <column id="1">
           	<halign>left</halign>
           	<valign>top</valign>
-          	<format>{%Author:2|Editor:3|Title|ShortTitle|PeriodicalTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ [%ShortTitle%]}{. %PeriodicalTitle:i%}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%,}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%){, %Pages::a2%}}{, roč. %Volume:R%}{, č %Issue%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+      		  <format>{%Author:2%}{. %Title%}{ [%ShortTitle%]}{. &lt;i&gt;%JournalName%&lt;/i&gt;}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%}{,{ %Day%. %Month:s%} %Year%}{, &lt;b&gt;%Volume%&lt;/b&gt;(%Issue%){, %Pages%}}{ roč. %Volume:R%}{, č. %Issue%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
+          	<format LCID='999'>{%Author:2|Editor:3|Title|ShortTitle|PeriodicalTitle:i%}{‚ %Year:rc%{%YearSuffix%}}{. %Title%}{ [%ShortTitle%]}{. %PeriodicalTitle:i%}{ [%Medium%]}{. %Edition%}{. %Editor:3%}{. %Translator:4%}.{ %City%{ (%StateProvince|CountryRegion%{, %CountryRegion%})}:}{ %StateProvince|CountryRegion%{ (%CountryRegion%)}:}{ %Publisher%,}{, %Day%. %Month%. %Year:c%}{, %Year:n%}{, &lt;b&gt;%Volume%&lt;/b&gt; (%Issue%){, %Pages::a2%}}{, roč. %Volume:R%}{, č %Issue%}{, %Pages:s. :s. :a2%}{ [cit. %YearAccessed%{-%MonthAccessed:n%{-%DayAccessed:n%}}]}{. %StandardNumber%}{. %Comments%}.{ %URL:s%}</format>
         </column>
         <sortkey>{%Author:0|Editor:0|Title|ShortTitle|PeriodicalTitle%}{ %Year:c%}{ %Title|ShortTitle|PeriodicalTitle%}</sortkey>
       </source>
@@ -620,14 +631,14 @@
         <single_prefix></single_prefix>
         <multi_prefix></multi_prefix>
         <corporate>{%Corporate:u%}</corporate>
-        <first_person>{%Last:u|First:u%}</first_person>
-        <other_persons>{%Last:u|First:u%}</other_persons>
+        <first_person>{%Last|First%}</first_person>
+        <other_persons>{%Last|First%}</other_persons>
         <separator_between_if_two> a </separator_between_if_two>
         <separator_between_if_more_than_two>, </separator_between_if_more_than_two>
         <separator_before_last> a </separator_before_last>
         <max_number_of_persons_to_display>1</max_number_of_persons_to_display>
         <number_of_persons_to_display_if_more_than_max>1</number_of_persons_to_display_if_more_than_max>
-        <overflow> et. al.</overflow>
+        <overflow> et al.</overflow>
         <single_suffix></single_suffix>
         <multi_suffix></multi_suffix>
       </list>
@@ -635,7 +646,7 @@
         <single_prefix></single_prefix>
         <multi_prefix></multi_prefix>
         <corporate>{%Corporate:u%}</corporate>
-        <first_person>{%Last:u|First:u%}{‚ %First:p%}{ %Middle:aups%}</first_person>
+        <first_person>{%Last:u|First:u%}{‚ %First:p%}{ %Middle%}</first_person>
         <other_persons>{%First:aup%}{ %Middle:aups%}{ %Last:u%}</other_persons>
         <separator_between_if_two> a </separator_between_if_two>
         <separator_between_if_more_than_two>‚ </separator_between_if_more_than_two>
@@ -1723,49 +1734,52 @@
                       </xsl:choose>
                     </xsl:variable>
                     <xsl:choose>
+                      <!-- we're using &#xA0; because of non-breking space -->
                       <!-- DOI always starts with "10." -->
                       <xsl:when test="starts-with($identifier, '10.')">
-                        <xsl:text>DOI </xsl:text>
+                        <xsl:text>DOI&#xA0;</xsl:text>
                       </xsl:when>
                       <!-- If user writes only standard number, then there are only digits, dashes and possibly spaces -->                   
                       <xsl:when test="number(translate($identifier, '- ','')) = translate($identifier, '- ','')">
                         <xsl:variable name="digits" select="translate($identifier, '- ','')" />
                         <xsl:choose>
                           <xsl:when test="string-length($digits) = 8">
-                            <xsl:text>ISSN </xsl:text>
+                            <xsl:text>ISSN&#xA0;</xsl:text>
                           </xsl:when>
                           <xsl:when test="string-length($digits) = 10">
-                            <xsl:text>ISBN </xsl:text>
+                            <xsl:text>ISBN&#xA0;</xsl:text>
                           </xsl:when>
                           <xsl:when test="string-length($digits) = 13 and starts-with($digits, '9790')">
-                            <xsl:text>ISMN </xsl:text>
+                            <xsl:text>ISMN&#xA0;</xsl:text>
                           </xsl:when>
                           <xsl:when test="string-length($digits) = 13">
-                            <xsl:text>ISBN </xsl:text>
+                            <xsl:text>ISBN&#xA0;</xsl:text>
                           </xsl:when>
                           <xsl:when test="string-length($digits) = 26">
-                            <xsl:text>ISAN </xsl:text>
+                            <xsl:text>ISAN&#xA0;</xsl:text>
                           </xsl:when>
                         </xsl:choose>
                       </xsl:when>
                       <!-- If string starts with letter, it could also be ISRC or old form of ISNM. Old ISNM always starts with letter M and then followed digits with dashes, while ISRC has four parts with specified length divided with dashes -->
                       <xsl:when test="substring($identifier, 3, 1) = substring($identifier, 7, 1) = substring($identifier, 10, 1)">
-                      	<xsl:text>ISRC </xsl:text>
+                      	<xsl:text>ISRC&#xA0;</xsl:text>
                       </xsl:when>
                       <xsl:when test="starts-with($identifier, 'M') and translate($identifier, '0123456789- ', '') = 'M'">
-                        <xsl:text>ISMN </xsl:text>
+                        <xsl:text>ISMN&#xA0;</xsl:text>
                       </xsl:when>
                     </xsl:choose>
-                    <xsl:value-of select="$identifier" />
+                    <!-- replace - with non-breaking &#8209; -->
+                    <xsl:variable name="new_identifier" select="translate($identifier, '-','&#8209;')" />
+                    <xsl:value-of select="$new_identifier" />
                   </xsl:when>
                   <!-- Handle URLs. -->
                   <xsl:when test="$name = 'URL' and string($source/b:URL)">
                     <xsl:choose>
                       <xsl:when test="string-length($source/b:YearAccessed) > 0">
-                        <xsl:text>Dostupné z: </xsl:text>
+                        <xsl:text>Dostupné z:&#xA0;</xsl:text>
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:text>Dostupné také z: </xsl:text>
+                        <xsl:text>Dostupné také z:&#xA0;</xsl:text>
                       </xsl:otherwise>
                     </xsl:choose>
                     <xsl:call-template name="format-url">
@@ -1875,9 +1889,9 @@
                       <xsl:when test="string-length($title) = 0">
                         <xsl:text>%empty%</xsl:text>
                       </xsl:when>
-                      <xsl:when test="string-length($title) &gt; 100">
+                      <xsl:when test="string-length($title) &gt; 200">
                         <xsl:call-template name="substring-before-last">
-                		  <xsl:with-param name="string" select="substring($title, 1, 100)"/>
+                		  <xsl:with-param name="string" select="substring($title, 1, 200)"/>
                 		  <xsl:with-param name="symbol" select="' '"/>
               			</xsl:call-template>
               			<xsl:text> …</xsl:text>
